@@ -31,9 +31,12 @@
 
         public override string ToString()
         {
-            return Name
+            return "Nome: "
+            + Name
             + ", "
+            + "Price: "
             + Price
+            + ", "
             + "Quantity: "
             + Quantity
             + ", "

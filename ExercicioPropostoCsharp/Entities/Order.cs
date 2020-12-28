@@ -34,7 +34,7 @@ namespace ExercicioPropostoCsharp.Entities
      
         public double Total()
         {
-            double sum = 0;
+            double sum = 0 ;
             foreach (OrderItem item in OrderItem)
             {
                 sum += item.subTotal();

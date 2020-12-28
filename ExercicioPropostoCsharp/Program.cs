@@ -9,23 +9,28 @@ namespace ExercicioPropostoCsharp
         static void Main(string[] args)
         {
 
-            Client client1 = new Client();
-            OrderItem orderItem1  = new OrderItem();
-            Order order = new Order();
-
+              Client client1 = new Client();
+           
+              Order order = new Order();
+            
+             
+            
             Console.Write("Name: ");
-            string name = Console.ReadLine();
-            Console.WriteLine("Email: ");
-            string email = Console.ReadLine();
-            Console.Write("Birth date (DD/MM/YYYY): ");
-            DateTime btd = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Enter order data: ");
-            Console.Write("Status: (PendingPayment/Processsing/Shiped/Delivered);");
-            OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
-            Console.Write("How many items to this order? ");
-            int pedidos = int.Parse(Console.ReadLine());
+              string name = Console.ReadLine();
+              Console.Write("Email: ");
+              string email = Console.ReadLine();
+              Console.Write("Birth date (DD/MM/YYYY): ");
+              DateTime btd = DateTime.Parse(Console.ReadLine());
+              Console.WriteLine("Enter order data: ");
+              Console.Write("Status: (PendingPayment/Processsing/Shiped/Delivered): ");
+              OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
+              Console.Write("How many items to this order? ");
+              int pedidos = int.Parse(Console.ReadLine());
 
             Client client = new Client(name, email, btd);
+            
+            
+           
 
             for(int i = 0; i < pedidos; i++)
             {
@@ -37,21 +42,33 @@ namespace ExercicioPropostoCsharp
                 double preco = double.Parse(Console.ReadLine());
                 Console.Write("Quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
-                OrderItem orderItem  = new OrderItem(quantity, preco, produtcName);
+                order.OrderItem.Add( new OrderItem(quantity, preco, produtcName));
 
             }
+           
+           
 
+
+
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("ORDER SUMMARY");
             Console.WriteLine("Order moment: ");
             Console.WriteLine(DateTime.Now);
             Console.Write("Order status: ");
-            Console.WriteLine(OrderStatus.Processsing);
+            Console.WriteLine(status);
             Console.WriteLine("Client:");
-            Console.WriteLine(client1);
+            Console.WriteLine(client.ToString());
             Console.WriteLine("Order item: ");
-            Console.WriteLine(orderItem1);
-            Console.WriteLine("Total Price: ");
-            Console.WriteLine(order);
+            
+            foreach (OrderItem item in order.OrderItem)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+
+            Console.Write("Total Price: ");
+            Console.Write(order.ToString());
         }
     }
 }
